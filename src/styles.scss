@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./_variables.scss";
+
+// importing the project fonts
+@import url("https://use.typekit.net/hwr7jql.css");
+
+@font-face {
+  font-family: 'filson-pro';
+  src: url("https://use.typekit.net/hwr7jql.css");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'filson-soft';
+  src: url("https://use.typekit.net/hwr7jql.css");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: filson-pro, sans-serif;
+  font-weight: 300;
+}
+
+.filson-soft {
+  font-family: filson-soft, sans-serif;
+  font-weight: 300;
+}
+
+.filson-pro {
+  font-family: filson-pro, sans-serif;
+  font-weight: 300;
+}
+
+@import "~bootstrap/scss/bootstrap";
+
+.fw-black {
+  font-weight: 900;
+}
+
+// ngx-pagination
+.ngx-pagination {
+  padding-left: 0px !important;
+}
+
+.ngx-pagination .current {
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  min-width: 30px;
+}
+
+.ngx-pagination .current,
+.btn-info {
+  background: $primary !important;
+  border: transparent !important;
+  border-radius: 50% !important;
+}
+
+.ngx-pagination .current:hover {
+  background: $primary !important;
+  border-radius: 50% !important;
+  border: transparent !important;
+}

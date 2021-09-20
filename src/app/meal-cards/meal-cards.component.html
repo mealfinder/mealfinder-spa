@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+  <div class="col-12 text-center" *ngIf="!meals">
+    <p>No data found.</p>
+  </div>
+  <div class="col-12" *ngIf="meals">
+
+    <div class="row my-5 justify-content-center">
+      <div class="col-12 col-md-6 text-center">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </div>
+
+    <div class="row my-5 justify-content-start">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" *ngFor="let meal of meals | paginate: { itemsPerPage: 8, currentPage: page }">
+        <div class="card h-100 mx-2">
+
+          <img [src]="meal.strMealThumb" class="card-img-top" [alt]="meal.strMeal">
+          <div class="card-body">
+            <h4 class="card-title fw-bold">{{ meal.strMeal }}</h4>
+            <h6 class="fw-normal">{{ meal.strCategory }}</h6>
+            <p class="card-text">
+              <span class="badge bg-secondary fw-light">{{ meal.strTags}}</span>
+            </p>
+            <div class="row">
+              <div class="col-6 d-grid gap-0">
+                <button class="btn btn-primary" (click)="setMeal(meal)" data-bs-toggle="modal" data-bs-target="#modalMealDetails">See details</button>
+              </div>
+              <div class="col-6 d-grid gap-0">
+                <a class="btn btn-outline-danger" *ngIf="meal.strYoutube !== null" [href]="meal.strYoutube" target="_blank">Youtube</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row my-5 justify-content-center">
+      <div class="col-12 col-md-6 text-center">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-meal-details [meal]="meal"></app-meal-details>

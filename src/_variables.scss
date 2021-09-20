@@ -1,0 +1,41 @@
+
+// Paleta de cores
+$custom-primary: #822037;
+// $custom-success: #93f89e;
+// $custom-danger: #f89393;
+// $custom-light: hsl(222, 36%, 95%);
+$custom-dark: #75998D;
+
+$custom-primary-alpha: rgba(
+  $color: $custom-primary,
+  $alpha: 0.3,
+);
+
+// Sobrepondo as cores do bootstrap pelas customizadas
+$primary: $custom-primary;
+$secondary: $custom-dark;
+// $success: $custom-success;
+// $danger: $custom-danger;
+
+// Corrigindo automaticamente variáveis do bootstrap
+$form-check-input-focus-border: $custom-primary-alpha;
+$form-switch-focus-color: $custom-primary-alpha;
+
+// Setando cor padrão dos inputs, selects, checkbox e ranges em foco do bootstrap
+// $default-primary: #0d6efd;
+$default-primary: #822037;
+
+// Setando automaticamente a cor padrão do bootstrap nos inputs de formulário
+// $input-btn-focus-color: rgba($default-primary, .25) !default;
+$input-focus-border-color: rgba($color: $default-primary, $alpha: 0.25);
+$input-focus-box-shadow: 0 0 0 .25rem rgba($default-primary, .25);
+$form-select-focus-box-shadow: 0 0 0 .25rem rgba($default-primary, .25);
+$form-check-input-checked-bg-color: $default-primary;
+$form-check-input-indeterminate-bg-color: $default-primary;
+$form-range-thumb-bg: $default-primary;
+$form-range-thumb-active-bg: rgba($color: $default-primary, $alpha: 0.25);
+
+// $accordion-button-active-bg: rgba($custom-light, 90%);
+$accordion-button-active-color: rgba($custom-dark, 10%);
+$accordion-button-focus-border-color: rgba($color: $custom-dark, $alpha: 0.25);
+$accordion-button-focus-box-shadow: 0 0 0 .25rem rgba($custom-dark, .25);
