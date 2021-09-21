@@ -6,14 +6,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { MealCardsComponent } from './meal-cards/meal-cards.component';
-import { MealDetailsComponent } from './meal-details/meal-details.component';
+import { MealsComponent } from './meals/meals.component';
+import { MealCardsComponent } from './meals/meal-cards/meal-cards.component';
+import { MealDetailsComponent } from './meals/meal-details/meal-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    MealsComponent,
     MealCardsComponent,
     MealDetailsComponent
   ],

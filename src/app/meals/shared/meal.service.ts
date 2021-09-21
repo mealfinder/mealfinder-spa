@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, retry } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
-
-  apiPath: string = 'https://www.themealdb.com'
+export class MealService {
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'applicaton/json' })
@@ -18,7 +18,7 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   getAll(search: string): Observable<any> {
-    return this.http.get<any>(this.apiPath + '/api/json/v1/1/search.php?s='+search).pipe(
+    return this.http.get<any>(environment.apiPath + '/meals?s='+search).pipe(
       catchError(this.handleError),
       map((res: any) => res.meals)
     );

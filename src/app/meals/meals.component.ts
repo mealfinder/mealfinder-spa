@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from './home.service';
+import { MealService } from './shared/meal.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-meals',
+  templateUrl: './meals.component.html',
+  styleUrls: ['./meals.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class MealsComponent implements OnInit {
 
   inputValueSaved: string = '';
 
   meals: any[] = [];
 
-  constructor(private homeService: HomeService) { }
+  constructor(private mealService: MealService) { }
 
   saveValue(value: string): void {
     if(value != this.inputValueSaved) {
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAll(search: string = ''): any {
-    this.homeService.getAll(search).subscribe(
+    this.mealService.getAll(search).subscribe(
       (resources: any[]) => {
         this.meals = resources;
       }
