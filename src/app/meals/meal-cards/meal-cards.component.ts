@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Meal } from '../shared/meal.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Meal } from '../shared/meal.model';
   templateUrl: './meal-cards.component.html',
   styleUrls: ['./meal-cards.component.scss']
 })
-export class MealCardsComponent {
+export class MealCardsComponent implements OnChanges {
 
   page: number = 1;
 
@@ -16,8 +16,16 @@ export class MealCardsComponent {
 
   constructor() { }
 
+  ngOnChanges(): void {
+    this.resetPage();
+  }
+
   setMeal(meal: Meal): void {
     this.meal = meal;
+  }
+
+  resetPage(): void {
+    this.page = 1;
   }
 
 }
