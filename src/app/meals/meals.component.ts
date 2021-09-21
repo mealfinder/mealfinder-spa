@@ -11,6 +11,11 @@ export class MealsComponent implements OnInit {
 
   inputValueSaved: string = '';
 
+  loading = {
+    loaded: false,
+    isEmpty: false
+  };
+
   meals: Meal[] = [];
 
   constructor(private mealService: MealService) { }
@@ -18,6 +23,7 @@ export class MealsComponent implements OnInit {
   saveValue(value: string): void {
     if(value != this.inputValueSaved) {
       this.inputValueSaved = value;
+      this.loading.loaded = false;
       this.getAll(value);
     }
   }
@@ -28,8 +34,10 @@ export class MealsComponent implements OnInit {
 
   getAll(search: string = ''): any {
     this.mealService.getAll(search).subscribe(
-      (resources: Meal[]) => { 
+      (resources: Meal[]) => {
+        (resources.length > 0) ? this.loading.isEmpty = false : this.loading.isEmpty = true;
         this.meals = resources
+        this.loading.loaded = true;        
       }
     );
   }

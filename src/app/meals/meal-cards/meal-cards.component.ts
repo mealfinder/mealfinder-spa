@@ -12,6 +12,13 @@ export class MealCardsComponent implements OnChanges {
 
   @Input() meals: Meal[] = [];
 
+  @Input() loading = {
+    loaded: false,
+    isEmpty: false
+  };
+
+  skeletons: any[] = Array(8);
+
   meal?: Meal;
 
   constructor() { }

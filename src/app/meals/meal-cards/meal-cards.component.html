@@ -1,8 +1,44 @@
 <div class="row justify-content-center">
-  <div class="col-12 text-center" *ngIf="!meals">
+  <div class="col-12 text-center" *ngIf="loading.isEmpty && loading.loaded">
     <p>No data found.</p>
   </div>
-  <div class="col-12" *ngIf="meals">
+
+  <!-- Skeleton loading cards -->
+  <div class="col-12" *ngIf="loading.isEmpty === false && loading.loaded === false">
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" *ngFor="let skeleton of skeletons">
+        <div class="card h-100 mx-2">
+          <div class="item">
+            <ngx-skeleton-loader count="1" [theme]="{ 
+                'border-radius': '5px',
+                height: '175px',
+                border: '1px solid white'
+              }"></ngx-skeleton-loader>
+          </div>
+          <div class="card-body">
+            <div class="item">
+              <ngx-skeleton-loader count="2" appearance="line"></ngx-skeleton-loader>
+            </div>
+            <div class="row">
+              <div class="col-6 d-grid gap-0">
+                <ngx-skeleton-loader count="1" appearance="line"></ngx-skeleton-loader>
+              </div>
+              <div class="col-6 d-grid gap-0">
+                <div class="item">
+                  <ngx-skeleton-loader count="1" appearance="line"></ngx-skeleton-loader>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="col-12" *ngIf="loading.isEmpty === false && loading.loaded">
 
     <div class="row my-5 justify-content-center">
       <div class="col-12 col-md-6 text-center">
@@ -31,6 +67,7 @@
       </div>
 
     </div>
+
     <div class="row my-5 justify-content-center">
       <div class="col-12 col-md-6 text-center">
         <pagination-controls (pageChange)="page = $event"></pagination-controls>

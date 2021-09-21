@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { MealsComponent } from './meals/meals.component';
 import { MealCardsComponent } from './meals/meal-cards/meal-cards.component';
 import { MealDetailsComponent } from './meals/meal-details/meal-details.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MealDetailsComponent } from './meals/meal-details/meal-details.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSkeletonLoaderModule.forRoot({ animation: 'pulse' })
   ],
   providers: [],
   bootstrap: [AppComponent]
