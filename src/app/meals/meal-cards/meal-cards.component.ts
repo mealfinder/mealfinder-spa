@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Meal } from '../shared/meal.model';
 
 @Component({
   selector: 'app-meal-cards',
@@ -9,12 +10,13 @@ export class MealCardsComponent {
 
   page: number = 1;
 
-  @Input() meals: any[] = [];
-  meal: any;
+  @Input() meals: Meal[] = [];
+
+  meal?: Meal;
 
   constructor() { }
 
-  setMeal(meal: any) {
+  setMeal(meal: Meal): void {
     this.meal = meal;
   }
 

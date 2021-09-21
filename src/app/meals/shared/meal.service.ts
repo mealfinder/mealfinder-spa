@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
+import { Meal } from './meal.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,26 @@ import { environment } from '../../../environments/environment';
 export class MealService {
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'applicaton/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'applicaton/json', 'Access-Control-Allow-Origin' : '*' })
   }
 
   constructor(private http: HttpClient) { }
 
   getAll(search: string): Observable<any> {
     return this.http.get<any>(environment.apiPath + '/meals?s='+search).pipe(
-      catchError(this.handleError),
-      map((res: any) => res.meals)
+      map((res: any) => this.jsonDataToMeals(res)),
+      catchError(this.handleError)
     );
+  }
+
+  protected jsonDataToMeals(jsonData: any[]): Meal[] {
+    console.log(jsonData);
+    
+    const meals: Meal[] = [];
+    jsonData.forEach(
+      element => meals.push(element)
+    );
+    return meals;
   }
 
   protected handleError(error: any): Observable<any> {

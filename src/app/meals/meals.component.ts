@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meal } from './shared/meal.model';
 import { MealService } from './shared/meal.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class MealsComponent implements OnInit {
 
   inputValueSaved: string = '';
 
-  meals: any[] = [];
+  meals: Meal[] = [];
 
   constructor(private mealService: MealService) { }
 
@@ -21,14 +22,14 @@ export class MealsComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getAll();
   }
 
   getAll(search: string = ''): any {
     this.mealService.getAll(search).subscribe(
-      (resources: any[]) => {
-        this.meals = resources;
+      (resources: Meal[]) => { 
+        this.meals = resources
       }
     );
   }

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Meal } from '../shared/meal.model';
 
 @Component({
   selector: 'app-meal-details',
@@ -7,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class MealDetailsComponent {
 
-  @Input() meal: any = {};
+  @Input() meal: Meal | undefined = {};
 
   constructor() { }
 

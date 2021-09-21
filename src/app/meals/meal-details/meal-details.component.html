@@ -3,27 +3,27 @@
 
     <div class="modal-content p-4">
       <div class="modal-header">
-        <h1 class="h1">{{ meal.strMeal }}</h1>
+        <h1 class="h1">{{ meal?.name || "Sem nome" }}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="row my-4">
           <div class="col-12 col-md-3">
             <figure class="figure">
-              <img class="figure-img img-fluid rounded" src="{{ meal.strMealThumb }}" alt="{{ meal.strMeal }}">
+              <img class="figure-img img-fluid rounded" [src]="meal?.thumb" [alt]="meal?.name">
             </figure>
           </div>
           <div class="col">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Category: {{ meal.strCategory }}</li>
-              <li class="list-group-item">Area: {{ meal.strArea }}</li>
+              <li class="list-group-item">Category: {{ meal?.category }}</li>
+              <li class="list-group-item">Area: {{ meal?.area }}</li>
             </ul>
           </div>
         </div>
         <div class="row my-3">
           <div class="col-12">
             <h4 class="h4">How to do</h4>
-            <p>{{ meal.strInstructions }}</p>
+            <p>{{ meal?.instructions }}</p>
           </div>
         </div>
       </div>
